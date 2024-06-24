@@ -12,9 +12,10 @@ const createProduct = async(req: Request,res:Response,next:NextFunction)=>{
     const product =  await prisma.product.create({
         data: {
             name:body.name,
-            description:body.description,
+            description:body.description?body.description:'',
             price:parseFloat(body.price?body.price:0),
-            quantity:parseInt(body.quantity?body.quantity:0)
+            quantity:parseInt(body.quantity?body.quantity:0),
+            unit:body.unit
         }
     })
     res.json(product)

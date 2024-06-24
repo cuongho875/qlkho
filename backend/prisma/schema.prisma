@@ -21,6 +21,7 @@ model Product {
   updatedAt DateTime @updatedAt  
   // inventory Inventory?
   quantity Int @default(0)
+  unit String 
   orderDetails OrderDetail[] @ignore
   importWarehouses ImportWarehouse[] 
   exportWarehouses ExportWarehouse[] 
