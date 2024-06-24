@@ -22,15 +22,26 @@ model Product {
   // inventory Inventory?
   quantity Int @default(0)
   orderDetails OrderDetail[] @ignore
+  importWarehouses ImportWarehouse[] 
+  exportWarehouses ExportWarehouse[] 
 }
 
-// model Inventory {
-//   id Int @id @default(autoincrement())
-//   product Product @relation(fields: [productId],references: [productId])
-//   productId Int @unique
-//   quantity Int
-// }
-
+model ImportWarehouse {
+  id Int @id @default(autoincrement())
+  product Product @relation(fields: [productId],references: [productId])
+  productId Int 
+  quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  
+}
+model ExportWarehouse {
+  id Int @id @default(autoincrement())
+  product Product @relation(fields: [productId],references: [productId])
+  productId Int 
+  quantity Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  
+}
 model Supplier {
   id Int @id @default(autoincrement())
   name String @db.VarChar(100)
